@@ -13,12 +13,23 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { HttpClient } from 'selenium-webdriver/http';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
-  declarations: [AppComponent, ValueComponent],
-  imports: [BrowserModule, HttpClientModule, FontAwesomeModule],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      ValueComponent,
+      NavComponent
+   ],
+   imports: [
+      BrowserModule,
+      HttpClientModule,
+      FontAwesomeModule
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
