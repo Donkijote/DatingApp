@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import {
   FontAwesomeModule,
@@ -16,20 +17,10 @@ import { HttpClient } from 'selenium-webdriver/http';
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      ValueComponent,
-      NavComponent
-   ],
-   imports: [
-      BrowserModule,
-      HttpClientModule,
-      FontAwesomeModule
-   ],
-   providers: [],
-   bootstrap: [
-      AppComponent
-   ]
+  declarations: [AppComponent, ValueComponent, NavComponent],
+  imports: [BrowserModule, HttpClientModule, FontAwesomeModule, FormsModule],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
