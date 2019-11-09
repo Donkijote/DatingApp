@@ -17,8 +17,29 @@
     <li class="nav-item">
       <a class="nav-link" href="#">Messages</a>
     </li>
+    <li class="nav-item" *ngIf="loggedIn()">
+      <a class="nav-link" href="javascript:void(0);" (click)="logout()"
+        >Logout</a
+      >
+    </li>
   </ul>
+  <div *ngIf="loggedIn()" class="dropdown">
+    <a class="dropdown-toggle text-light">
+      Welcome user
+    </a>
+
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#"
+        ><fa-icon [icon]="['far', 'user']"></fa-icon> Edit Profile</a
+      >
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#"
+        ><fa-icon [icon]="['fas', 'sign-out-alt']"></fa-icon>Logout</a
+      >
+    </div>
+  </div>
   <form
+    *ngIf="!loggedIn()"
     #loginForm="ngForm"
     class="form-inline my-2 my-lg-0"
     (ngSubmit)="login()"
