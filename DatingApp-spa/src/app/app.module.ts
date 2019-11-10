@@ -11,6 +11,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
+import { BsDropdownModule } from 'ngx-bootstrap';
+
 import { AppComponent } from './app.component';
 import { HttpClient } from 'selenium-webdriver/http';
 import { NavComponent } from './nav/nav.component';
@@ -21,7 +23,13 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent],
-  imports: [BrowserModule, HttpClientModule, FontAwesomeModule, FormsModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    FormsModule,
+    BsDropdownModule.forRoot()
+  ],
   providers: [AuthService, ErrorInterceptorProvider],
   bootstrap: [AppComponent]
 })
