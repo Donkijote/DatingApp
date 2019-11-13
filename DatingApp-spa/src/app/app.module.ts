@@ -25,6 +25,7 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
+import { UserService } from './_services/user.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { appRoutes } from './routes';
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, ErrorInterceptorProvider],
+  providers: [AuthService, ErrorInterceptorProvider, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
