@@ -18,10 +18,13 @@ export class MemberDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadUser();
+    this.route.data.subscribe(data => {
+      const key = 'user';
+      this.user = data[key];
+    });
   }
 
-  loadUser() {
+  /*loadUser() {
     const key = 'id';
     this.userService.getUser(+this.route.snapshot.params[key]).subscribe(
       (user: User) => {
@@ -31,5 +34,5 @@ export class MemberDetailComponent implements OnInit {
         this.alert.error(error);
       }
     );
-  }
+  }*/
 }
