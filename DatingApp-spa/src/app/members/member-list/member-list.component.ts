@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../_models/user';
 import { UserService } from '../../_services/user.service';
 import { AlertsService } from '../../_services/alerts.service';
-import { ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-member-list',
@@ -14,7 +14,7 @@ export class MemberListComponent implements OnInit {
   constructor(
     private userService: UserService,
     private alert: AlertsService,
-    private route: ActivatedRouteSnapshot
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
