@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using DatingApp_api.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace DatingApp_api.Dtos
 {
@@ -68,5 +69,19 @@ namespace DatingApp_api.Dtos
         public string Interests { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+    }
+
+    public class PhotosCreationDto
+    {
+        public string Url { get; set; }
+        public IFormFile File { get; set; }
+        public string Description { get; set; }
+        public DateTime DateAdded { get; set; }
+        public string PublicId { get; set; }
+        public PhotosCreationDto()
+        {
+            DateAdded = DateTime.Now;
+        }
+
     }
 }

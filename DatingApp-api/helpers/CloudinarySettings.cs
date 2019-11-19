@@ -1,6 +1,6 @@
 namespace DatingApp_api.helpers
 {
-    public class ClouddinarySettings
+    public class CloudinarySettings
     {
         public string CloudName { get; set; }
         public string ApiKey { get; set; }
