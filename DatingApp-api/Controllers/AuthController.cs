@@ -9,6 +9,7 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using AutoMapper;
 
 namespace DatingApp_api.Controllers
 {
@@ -19,8 +20,10 @@ namespace DatingApp_api.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        private readonly IMapper _mapper;
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
+            _mapper = mapper;
             _config = config;
             _repo = repo;
         }
@@ -77,10 +80,16 @@ namespace DatingApp_api.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             //2. create token based on the token description
             var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            //optional token to pass user information like photos or something else
+
+            var userInfo = _mapper.Map<UserListDto>(userFromRepo);
+
             //3. write the token in the response sent back to the client
             return Ok(new
             {
-                token = tokenHandler.WriteToken(token)
+                token = tokenHandler.WriteToken(token),
+                userInfo
             });
 
         }
