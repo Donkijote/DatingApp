@@ -9,10 +9,33 @@ export class AlertsService {
   constructor() {}
 
   confirm(message: string, okCallback: () => any) {
-    alertify.confirm(message, (e: any) => {
+    /*alertify.confirm(message, (e: any) => {
       if (e) {
         okCallback();
       }
+    });*/
+    iziToast.question({
+      timeout: false,
+      close: true,
+      overlay: true,
+      color: 'red',
+      messageColor: 'black',
+      messageSize: '18',
+      id: 'question',
+      zindex: 999,
+      title: 'Hey',
+      message,
+      position: 'center',
+      buttons: [
+        [
+          '<button>Ok</button>',
+          (instance, toast) => {
+            okCallback();
+            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+          },
+          true
+        ]
+      ]
     });
   }
 
