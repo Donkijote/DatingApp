@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm', { static: true }) editForm: NgForm;
   user: User;
+  photoUrl: string;
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
     if (this.editForm.dirty) {
@@ -32,6 +33,7 @@ export class MemberEditComponent implements OnInit {
       const key = 'user';
       this.user = data[key];
     });
+    this.authService.currentPhotoUrl.subscribe(resp => (this.photoUrl = resp));
   }
 
   updateUser() {
