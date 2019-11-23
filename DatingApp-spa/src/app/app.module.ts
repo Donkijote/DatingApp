@@ -3,9 +3,10 @@ import {
   HammerGestureConfig,
   HAMMER_GESTURE_CONFIG
 } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -18,7 +19,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import {
+  BsDropdownModule,
+  TabsModule,
+  BsDatepickerModule
+} from 'ngx-bootstrap';
 import { NgxGalleryModule } from 'ngx-gallery';
 
 import { AppComponent } from './app.component';
@@ -41,6 +46,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { from } from 'rxjs';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -69,12 +75,15 @@ export class CustomHammerConfig extends HammerGestureConfig {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FontAwesomeModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    BsDatepickerModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
     JwtModule.forRoot({
