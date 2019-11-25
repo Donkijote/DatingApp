@@ -3,6 +3,7 @@ import { User } from '../../_models/user';
 import { UserService } from '../../_services/user.service';
 import { AlertsService } from '../../_services/alerts.service';
 import { ActivatedRoute } from '@angular/router';
+import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
 
 @Component({
   selector: 'app-member-list',
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MemberListComponent implements OnInit {
   users: User[];
+  pagination: Pagination;
   constructor(
     private userService: UserService,
     private alert: AlertsService,
@@ -21,17 +23,26 @@ export class MemberListComponent implements OnInit {
     this.route.data.subscribe(data => {
       const key = 'users';
       this.users = data[key].result;
+      this.pagination = data[key].pagination;
     });
   }
 
-  /*loadUsers() {
-    this.userService.getUsers().subscribe(
-      (users: User[]) => {
-        this.users = users;
-      },
-      error => {
-        this.alert.error(error);
-      }
-    );
-  }*/
+  pageChanged(event: any): void {
+    this.pagination.currentPage = event.page;
+    this.loadUsers();
+  }
+
+  loadUsers() {
+    this.userService
+      .getUsers(this.pagination.currentPage, this.pagination.itemsPerPage)
+      .subscribe(
+        (resp: PaginatedResult<User[]>) => {
+          this.users = resp.result;
+          this.pagination = resp.pagination;
+        },
+        error => {
+          this.alert.error(error);
+        }
+      );
+  }
 }
