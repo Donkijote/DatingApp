@@ -20,7 +20,7 @@ export class MemberListComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       const key = 'users';
-      this.users = data[key];
+      this.users = data[key].result;
     });
   }
 
