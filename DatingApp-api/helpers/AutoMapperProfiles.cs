@@ -24,6 +24,7 @@ namespace DatingApp_api.helpers
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotosCreationDto, Photo>();
             CreateMap<UserForRegisterDto, User>();
+            CreateMap<MessageForCreationDto, Message>().ReverseMap();
         }
     }
 }
