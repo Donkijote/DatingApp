@@ -111,7 +111,7 @@ export class UserService {
           paginationResult.result = response.body;
           if (response.headers.get('Pagination') !== null) {
             paginationResult.pagination = JSON.parse(
-              response.headers.get('paginatin')
+              response.headers.get('Pagination')
             );
           }
           return paginationResult;

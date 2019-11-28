@@ -25,7 +25,7 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      const key = 'message';
+      const key = 'messages';
       this.messages = data[key];
       this.pagination = data[key].pagination;
     });
