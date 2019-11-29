@@ -46,6 +46,7 @@
           '/members',
           messageContainer == 'Outbox' ? message.recipientId : message.senderId
         ]"
+        [queryParams]="{ tabs: 3 }"
       >
         <td>{{ message.content }}</td>
         <td>

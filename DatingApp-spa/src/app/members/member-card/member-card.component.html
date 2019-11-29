@@ -20,7 +20,11 @@
         </button>
       </li>
       <li class="list-inline-item">
-        <button class="btn btn-sm btn-primary">
+        <button
+          class="btn btn-sm btn-primary"
+          [routerLink]="['/members/', user.id]"
+          [queryParams]="{ tabs: 3 }"
+        >
           <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
         </button>
       </li>
