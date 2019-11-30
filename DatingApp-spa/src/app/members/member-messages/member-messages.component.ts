@@ -12,6 +12,7 @@ import { AlertsService } from 'src/app/_services/alerts.service';
 export class MemberMessagesComponent implements OnInit {
   @Input() recipientId: number;
   messages: Message[];
+  newMessage: any = {};
 
   constructor(
     private userService: UserService,
@@ -20,7 +21,6 @@ export class MemberMessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.messages);
     this.loadMessages();
   }
 
@@ -30,6 +30,21 @@ export class MemberMessagesComponent implements OnInit {
       .subscribe(
         resp => {
           this.messages = resp;
+        },
+        err => {
+          this.alert.error(err);
+        }
+      );
+  }
+
+  sendMessage() {
+    this.newMessage.recipientId = this.recipientId;
+    this.userService
+      .sendMessage(this.auth.decodedToken.nameid, this.newMessage)
+      .subscribe(
+        (message: Message) => {
+          this.messages.unshift(message);
+          this.newMessage.content = '';
         },
         err => {
           this.alert.error(err);
