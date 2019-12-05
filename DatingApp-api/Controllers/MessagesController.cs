@@ -14,7 +14,6 @@ namespace DatingApp_api.Controllers
 {
 
     [ServiceFilter(typeof(LogUserActivity))]
-    [Authorize]
     [Route("api/users/{userId}/[Controller]")]
     [ApiController]
     public class MessagesController : ControllerBase
