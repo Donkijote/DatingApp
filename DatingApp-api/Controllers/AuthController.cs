@@ -56,7 +56,7 @@ namespace DatingApp_api.Controllers
             //claims or info that token will have
             var claims = new[]{
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
+                new Claim(ClaimTypes.Name, userFromRepo.UserName)
             };
             // Create a security key for the token
             var key = new SymmetricSecurityKey(Encoding.UTF8
