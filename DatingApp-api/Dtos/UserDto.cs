@@ -111,4 +111,9 @@ namespace DatingApp_api.Dtos
         public bool IsMain { get; set; }
         public string PublicId { get; set; }
     }
+
+    public class RoleEditDto
+    {
+        public string[] RoleNames { get; set; }
+    }
 }
