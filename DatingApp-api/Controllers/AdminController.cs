@@ -21,7 +21,7 @@ namespace DatingApp_api.Controllers
             _dataContext = dataContext;
         }
 
-        [Authorize(Policy = "RequireAdminRole")]
+        [Authorize(Policy = "RequiredAdminRole")]
         [HttpGet("userwithroles")]
         public async Task<IActionResult> GetUserWithRoles()
         {
@@ -40,7 +40,7 @@ namespace DatingApp_api.Controllers
         }
 
         [Authorize(Policy = "RequiredAdminRole")]
-        [HttpGet]
+        [HttpPost("editRoles/{userName}")]
         public async Task<IActionResult> EditUsers(string userName, RoleEditDto roleDto)
         {
 
@@ -56,7 +56,7 @@ namespace DatingApp_api.Controllers
 
         private async Task<IdentityResult> AssingRole(string userName, RoleEditDto roleDto)
         {
-            var user = _userManager.FindByIdAsync(userName).Result;
+            var user = _userManager.FindByNameAsync(userName).Result;
 
             var roles = await _userManager.GetRolesAsync(user);
 
